@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colegio Rayito de Sol - Educación con Amor y Excelencia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #3B82F6;
+        --secondary: #FACC15;
+        --accent: #22C55E;
+        --orange: #FB923C;
+        --purple: #A855F7;
+    }
+    
+    * {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        font-family: 'Nunito', sans-serif;
+        overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4 {
+        font-family: 'Fredoka', sans-serif;
+    }
+    
+    .hero-bg {
+        background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 50%, #22C55E 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-bg::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 500px;
+        height: 500px;
+        background: rgba(250, 204, 21, 0.2);
+        border-radius: 50%;
+        filter: blur(80px);
+    }
+    
+    .hero-bg::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -5%;
+        width: 400px;
+        height: 400px;
+        background: rgba(251, 146, 60, 0.2);
+        border-radius: 50%;
+        filter: blur(80px);
+    }
+    
+    .card-hover {
+        transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .nav-link {
+        position: relative;
+        transition: color 0.3s ease;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--secondary);
+        border-radius: 2px;
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after, .nav-link.active::after {
+        width: 100%;
+    }
+    
+    .shape-divider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+    }
+    
+    .shape-divider svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 80px;
+    }
+    
+    .shape-divider .shape-fill {
+        fill: #FFFFFF;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, var(--primary), #2563EB);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    }
+    
+    .btn-secondary {
+        background: linear-gradient(135deg, var(--secondary), #EAB308);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
+    }
+    
+    .btn-secondary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(250, 204, 21, 0.4);
+    }
+    
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    .animate-bounce-slow {
+        animation: bounce-slow 3s ease-in-out infinite;
+    }
+    
+    @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 11px;
+        top: 40px;
+        bottom: -20px;
+        width: 2px;
+        background: linear-gradient(180deg, var(--primary), transparent);
+    }
+    
+    .timeline-item:last-child::before {
+        display: none;
+    }
+    
+    .mobile-menu {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu.active {
+        max-height: 500px;
+        opacity: 1;
+    }
+</style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-md z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-xl flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Rayito de Sol</h1>
+                        <p class="text-xs text-gray-500">Colegio Básico</p>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#inicio" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Inicio</a>
+                    <a href="#nosotros" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Nosotros</a>
+                    <a href="#niveles" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Niveles</a>
+                    <a href="#actividades" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Actividades</a>
+                    <a href="#admision" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Admisión</a>
+                    <a href="#noticias" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Noticias</a>
+                    <a href="#contacto" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Contacto</a>
+                    <a href="#contacto" class="btn-primary text-white px-6 py-2.5 rounded-full font-semibold">
+                        Agendar Visita
+                    </a>
+                </div>
+                
+                <button id="mobile-menu-btn" class="lg:hidden text-2xl text-gray-700">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="mobile-menu lg:hidden pb-4">
+                <a href="#inicio" class="block py-3 text-gray-700 font-semibold hover:text-blue-600 border-b border-gray-100">Inicio</a>
+                <a href="#nosotros" class="block py-3 text-gray-700 font-semibold hover:text-blue-600 border-b border-gray-100">Nosotros</a>
+                <a href="#niveles" class="block py-3 text-gray-700 font-semibold hover:text-blue-600 border-b border-gray-100">Niveles</a>
+                <a href="#actividades" class="block py-3 text-gray-700 font-semibold hover:text-blue-600 border-b border-gray-100">Actividades</a>
+                <a href="#admision" class="block py-3 text-gray-700 font-semibold hover:text-blue-600 border-b border-gray-100">Admisión</a>
+                <a href="#noticias" class="block py-3 text-gray-700 font-semibold hover:text-blue-600 border-b border-gray-100">Noticias</a>
+                <a href="#contacto" class="block py-3 text-gray-700 font-semibold hover:text-blue-600">Contacto</a>
+                <a href="#contacto" class="btn-primary text-white px-6 py-3 rounded-full font-semibold block text-center mt-4">
+                    Agendar Visita
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-bg min-h-screen flex items-center pt-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                        <span class="text-sm font-semibold"><i class="fa-solid fa-award mr-2"></i>35 años formando futuros brillantes</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                        Colegio Rayito de Sol
+                    </h1>
+                    <p class="text-2xl lg:text-3xl font-semibold mb-4 text-yellow-300">
+                        "Educando con Amor, Creciendo con Excelencia"
+                    </p>
+                    <p class="text-lg lg:text-xl mb-8 text-white/90 leading-relaxed">
+                        Un espacio seguro y alegre donde cada niño descubre su potencial a través del juego, la creatividad y valores sólidos.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#admision" class="btn-secondary text-gray-800 px-8 py-4 rounded-full font-bold text-lg">
+                            <i class="fa-solid fa-user-plus mr-2"></i>Inscríbete Ahora
+                        </a>
+                        <a href="#nosotros" class="bg-white/20 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-600 transition-all">
+                            <i class="fa-solid fa-play-circle mr-2"></i>Conoce Más
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="animate-float">
+                        <div class="bg-white rounded-3xl shadow-2xl p-8">
+                            <img src="img/hero.png" alt="Niños felices en clase" class="w-full h-80 object-cover rounded-2xl">
+                            <div class="grid grid-cols-3 gap-4 mt-6">
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-blue-600">500+</div>
+                                    <div class="text-sm text-gray-600">Alumnos</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-green-600">45</div>
+                                    <div class="text-sm text-gray-600">Profesores</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-yellow-500">35</div>
+                                    <div class="text-sm text-gray-600">Años</div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="absolute -top-6 -left-6 w-24 h-24 bg-yellow-400 rounded-full opacity-80 animate-bounce-slow"></div>
+                    <div class="absolute -bottom-6 -right-6 w-20 h-20 bg-orange-400 rounded-full opacity-80 animate-bounce-slow" style="animation-delay: 1s;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="shape-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section id="nosotros" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                    ¿QUIÉNES SOMOS?
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">Nuestra Misión</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Formamos niños y niñas felices, creativos y con valores, preparándolos para los desafíos del mañana
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="card-hover bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-3xl">
+                    <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center text-white text-3xl mb-6 shadow-lg">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Misión</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Brindar una educación integral de calidad, fomentando el amor por el aprendizaje, la creatividad y el desarrollo de habilidades socioemocionales en un ambiente seguro y estimulante.
+                    </p>
+                </div>
+                
+                <div class="card-hover bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-3xl">
+                    <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center text-white text-3xl mb-6 shadow-lg">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Visión</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Ser reconocidos como una institución líder en educación básica, formando ciudadanos responsables, empáticos y con pensamiento crítico para construir un mundo mejor.
+                    </p>
+                </div>
+                
+                <div class="card-hover bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-3xl">
+                    <div class="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center text-white text-3xl mb-6 shadow-lg">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Valores</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Respeto, Responsabilidad, Solidaridad, Honestidad y Amor. Promovemos estos valores en cada actividad diaria para formar mejores personas.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl p-8 lg:p-12 text-white">
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-3xl lg:text-4xl font-bold mb-4">¿Por qué elegir Rayito de Sol?</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-2xl text-yellow-300 mt-1"></i>
+                                <span class="text-lg">Metodología activa y lúdica centrada en el niño</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-2xl text-yellow-300 mt-1"></i>
+                                <span class="text-lg">Grupos reducidos para atención personalizada</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-2xl text-yellow-300 mt-1"></i>
+                                <span class="text-lg">Profesores certificados y en constante capacitación</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-circle text-2xl text-yellow-300 mt-1"></i>
+                                <span class="text-lg">Instalaciones modernas y áreas verdes seguras</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="img/instalaciones.png" alt="Instalaciones del colegio" class="rounded-2xl shadow-2xl w-full h-80 object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Niveles Educativos Section -->
+    <section id="niveles" class="py-20 bg-gradient-to-br from-blue-50 via-white to-green-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                    OFERTA EDUCATIVA
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">Niveles Educativos</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Acompañamos el crecimiento de tu hijo desde los 3 hasta los 12 años
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Preescolar -->
+                <div class="card-hover bg-white rounded-3xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-orange-400 to-pink-500 h-48 flex items-center justify-center relative">
+                        <img src="img/preescolar.png" alt="Preescolar" class="absolute inset-0 w-full h-full object-cover opacity-30">
+                        <div class="relative z-10 text-center text-white">
+                            <i class="fa-solid fa-baby-carriage text-6xl mb-4"></i>
+                            <h3 class="text-4xl font-bold">Preescolar</h3>
+                            <p class="text-xl">3 a 5 años</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            En esta etapa despertamos la curiosidad natural de los niños a través del juego, la exploración y el arte. Desarrollamos habilidades motoras, lenguaje y socialización.
+                        </p>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-palette text-orange-500"></i>
+                                </div>
+                                <span class="text-gray-700">Aprendizaje basado en juego</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-music text-orange-500"></i>
+                                </div>
+                                <span class="text-gray-700">Música, arte y expresión corporal</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-language text-orange-500"></i>
+                                </div>
+                                <span class="text-gray-700">Iniciación al inglés</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-users text-orange-500"></i>
+                                </div>
+                                <span class="text-gray-700">Desarrollo socioemocional</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold">Pre-Kinder</span>
+                            <span class="bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold">Kinder</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Primaria -->
+                <div class="card-hover bg-white rounded-3xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-48 flex items-center justify-center relative">
+                        <img src="img/primaria.png" alt="Primaria" class="absolute inset-0 w-full h-full object-cover opacity-30">
+                        <div class="relative z-10 text-center text-white">
+                            <i class="fa-solid fa-book-open text-6xl mb-4"></i>
+                            <h3 class="text-4xl font-bold">Primaria</h3>
+                            <p class="text-xl">6 a 12 años - 1° a 6° grado</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Consolidamos las bases académicas mientras fomentamos el pensamiento crítico, la investigación y el trabajo en equipo. Preparamos a nuestros alumnos para la secundaria.
+                        </p>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-calculator text-blue-500"></i>
+                                </div>
+                                <span class="text-gray-700">Matemáticas y Ciencias</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-globe text-blue-500"></i>
+                                </div>
+                                <span class="text-gray-700">Inglés intensivo</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-laptop text-blue-500"></i>
+                                </div>
+                                <span class="text-gray-700">Tecnología y Robótica</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-brain text-blue-500"></i>
+                                </div>
+                                <span class="text-gray-700">Pensamiento crítico y valores</span>
+                            </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <span class="bg-blue-100 text-blue-700 px-3 py-2 rounded-full text-xs font-semibold text-center">1°-2°</span>
+                            <span class="bg-blue-100 text-blue-700 px-3 py-2 rounded-full text-xs font-semibold text-center">3°-4°</span>
+                            <span class="bg-blue-100 text-blue-700 px-3 py-2 rounded-full text-xs font-semibold text-center">5°-6°</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Actividades Section -->
+    <section id="actividades" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-yellow-100 text-yellow-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                    VIDA ESTUDIANTIL
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">Talleres y Deportes</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Actividades extracurriculares que potencian los talentos de cada niño
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="card-hover bg-gradient-to-br from-red-50 to-orange-50 p-6 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 shadow-lg">
+                        <i class="fa-solid fa-futbol"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Fútbol</h3>
+                    <p class="text-gray-600 text-sm">Trabajo en equipo y disciplina deportiva</p>
+                </div>
+                
+                <div class="card-hover bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 shadow-lg">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Música</h3>
+                    <p class="text-gray-600 text-sm">Coros, piano y guitarra para todos</p>
+                </div>
+                
+                <div class="card-hover bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 shadow-lg">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Arte</h3>
+                    <p class="text-gray-600 text-sm">Pintura, dibujo y manualidades</p>
+                </div>
+                
+                <div class="card-hover bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 shadow-lg">
+                        <i class="fa-solid fa-masks-theater"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Teatro</h3>
+                    <p class="text-gray-600 text-sm">Expresión y confianza en escena</p>
+                </div>
+                
+                <div class="card-hover bg-gradient-to-br from-yellow-50 to-amber-50 p-6 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 shadow-lg">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Robótica</h3>
+                    <p class="text-gray-600 text-sm">Programación y construcción LEGO</p>
+                </div>
+                
+                <div class="card-hover bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-teal-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 shadow-lg">
+                        <i class="fa-solid fa-running"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Atletismo</h3>
+                    <p class="text-gray-600 text-sm">Desarrollo físico integral</p>
+                </div>
+                
+                <div class="card-hover bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-indigo-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 shadow-lg">
+                        <i class="fa-solid fa-chess"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Ajedrez</h3>
+                    <p class="text-gray-600 text-sm">Estrategia y concentración</p>
+                </div>
+                
+                <div class="card-hover bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-pink-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 shadow-lg">
+                        <i class="fa-solid fa-person-swimming"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Natación</h3>
+                    <p class="text-gray-600 text-sm">Seguridad acuática y diversión</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-green-500 to-blue-500 rounded-3xl p-8 lg:p-12 text-white text-center">
+                <h3 class="text-3xl font-bold mb-4">Horario Extendido Disponible</h3>
+                <p class="text-xl mb-6 text-white/90">De 7:00 AM a 6:00 PM con talleres, tareas dirigidas y alimentación</p>
+                <a href="#contacto" class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold inline-block hover:bg-gray-100 transition-all">
+                    <i class="fa-solid fa-info-circle mr-2"></i>Solicitar Información
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admisión Section -->
+    <section id="admision" class="py-20 bg-gradient-to-br from-blue-50 via-white to-yellow-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                    ÚNETE A NOSOTROS
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">Proceso de Admisión 2025-2026</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Un proceso sencillo y transparente para que tu hijo sea parte de nuestra familia
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8">Pasos para la Inscripción</h3>
+                    <div class="space-y-6">
+                        <div class="timeline-item relative flex gap-6">
+                            <div class="flex-shrink-0 w-6 h-6 bg-blue-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                            <div class="pb-8">
+                                <h4 class="text-xl font-bold text-gray-800 mb-2">1. Solicita Información</h4>
+                                <p class="text-gray-600">Completa el formulario o llámanos. Te contactaremos en 24 horas.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item relative flex gap-6">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                            <div class="pb-8">
+                                <h4 class="text-xl font-bold text-gray-800 mb-2">2. Visita Guiada</h4>
+                                <p class="text-gray-600">Agenda un tour por nuestras instalaciones. Conoce nuestro proyecto educativo.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item relative flex gap-6">
+                            <div class="flex-shrink-0 w-6 h-6 bg-yellow-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                            <div class="pb-8">
+                                <h4 class="text-xl font-bold text-gray-800 mb-2">3. Entrevista Familiar</h4>
+                                <p class="text-gray-600">Conversa con nuestro equipo pedagógico para alinear expectativas.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item relative flex gap-6">
+                            <div class="flex-shrink-0 w-6 h-6 bg-purple-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-800 mb-2">4. Entrega de Documentos</h4>
+                                <p class="text-gray-600">Presenta la documentación y realiza el pago de inscripción.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-3xl shadow-2xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Documentos Requeridos</h3>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-file-circle-check text-blue-500 text-xl mt-1"></i>
+                            <span class="text-gray-700">Acta de nacimiento del alumno/a (copia certificada)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-file-circle-check text-blue-500 text-xl mt-1"></i>
+                            <span class="text-gray-700">CURP del alumno/a</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-file-circle-check text-blue-500 text-xl mt-1"></i>
+                            <span class="text-gray-700">Identificación oficial de padres o tutores</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-file-circle-check text-blue-500 text-xl mt-1"></i>
+                            <span class="text-gray-700">Comprobante de domicilio reciente</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-file-circle-check text-blue-500 text-xl mt-1"></i>
+                            <span class="text-gray-700">6 fotografías tamaño infantil</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-file-circle-check text-blue-500 text-xl mt-1"></i>
+                            <span class="text-gray-700">Boleta del grado anterior (si aplica)</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="bg-gradient-to-r from-blue-500 to-green-500 rounded-2xl p-6 text-white">
+                        <h4 class="text-xl font-bold mb-3">¡Promoción Especial!</h4>
+                        <p class="mb-4">Inscríbete antes del 30 de noviembre y obtén <strong>50% de descuento</strong> en la cuota de inscripción.</p>
+                        <a href="#contacto" class="bg-white text-blue-600 px-6 py-3 rounded-full font-bold inline-block hover:bg-gray-100 transition-all">
+                            Agendar Cita <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Noticias Section -->
+    <section id="noticias" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                    COMUNIDAD
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">Noticias y Eventos</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Mantente al día con las últimas novedades de nuestro colegio
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <article class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="img/ciencias.png" alt="Feria de Ciencias" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">15 DE NOVIEMBRE</span>
+                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">EVENTO</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Feria de Ciencias 2024</h3>
+                        <p class="text-gray-600 mb-4">Nuestros alumnos de primaria presentarán sus proyectos científicos. Invitamos a toda la comunidad educativa.</p>
+                        <a href="#" class="text-blue-600 font-semibold hover:text-blue-700">Leer más <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+                </article>
+                
+                <article class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="img/admision.png" alt="Inscripciones Abiertas" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">1 DE NOVIEMBRE</span>
+                            <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-xs font-semibold">ADMISIÓN</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Inscripciones Abiertas 2026-2027</h3>
+                        <p class="text-gray-600 mb-4">¡Ya puedes inscribir a tu hijo! Proceso 100% digital y tour virtual disponible. Cupos limitados.</p>
+                        <a href="#admision" class="text-blue-600 font-semibold hover:text-blue-700">Leer más <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+                </article>
+                
+                <article class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="img/deportes.png" alt="Campeonato Deportivo" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">20 DE OCTUBRE</span>
+                            <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-semibold">DEPORTES</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Campeones Interescolares</h3>
+                        <p class="text-gray-600 mb-4">Nuestro equipo de fútbol obtuvo el primer lugar en el torneo interescolar. ¡Felicidades campeones!</p>
+                        <a href="#" class="text-blue-600 font-semibold hover:text-blue-700">Leer más <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                    CONTÁCTANOS
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">Estamos Para Ayudarte</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Agenda una visita o resuelve tus dudas. ¡Nos encanta conocer nuevas familias!
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white rounded-3xl shadow-xl p-8 mb-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Envíanos un Mensaje</h3>
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Nombre Completo *</label>
+                                    <input type="text" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-all" placeholder="Juan Pérez">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Teléfono *</label>
+                                    <input type="tel" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-all" placeholder="55 1234 5678">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Correo Electrónico *</label>
+                                <input type="email" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-all" placeholder="correo@ejemplo.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Grado de Interés</label>
+                                <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-all">
+                                    <option>Selecciona un nivel</option>
+                                    <option>Preescolar - Pre-Kinder</option>
+                                    <option>Preescolar - Kinder</option>
+                                    <option>Primaria 1° a 3°</option>
+                                    <option>Primaria 4° a 6°</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Mensaje</label>
+                                <textarea rows="4" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-all" placeholder="Cuéntanos en qué te podemos ayudar..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full text-white py-4 rounded-xl font-bold text-lg">
+                                <i class="fa-solid fa-paper-plane mr-2"></i>Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white rounded-3xl shadow-xl p-8 mb-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Información de Contacto</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-location-dot text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Dirección</h4>
+                                    <p class="text-gray-600">Av. del Sol 123, Col. Jardines<br>Ciudad de México, CDMX 01234</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-phone text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Teléfonos</h4>
+                                    <p class="text-gray-600">(55) 1234-5678<br>(55) 8765-4321</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-envelope text-yellow-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Correo Electrónico</h4>
+                                    <p class="text-gray-600">info@rayitodesol.edu.mx<br>admisiones@rayitodesol.edu.mx</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-clock text-purple-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Horario de Atención</h4>
+                                    <p class="text-gray-600">Lunes a Viernes: 7:00 AM - 6:00 PM<br>Sábados: 9:00 AM - 1:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.0!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDcnNTkuNSJX!5e0!3m2!1ses!2smx!4v1234567890" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-xl flex items-center justify-center text-white text-2xl">
+                            <i class="fa-solid fa-sun"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Rayito de Sol</h3>
+                            <p class="text-xs text-gray-400">Colegio Básico</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Formando líderes del mañana con amor, valores y excelencia académica desde 1989.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#nosotros" class="text-gray-400 hover:text-white transition-colors">Nosotros</a></li>
+                        <li><a href="#niveles" class="text-gray-400 hover:text-white transition-colors">Niveles Educativos</a></li>
+                        <li><a href="#actividades" class="text-gray-400 hover:text-white transition-colors">Actividades</a></li>
+                        <li><a href="#admision" class="text-gray-400 hover:text-white transition-colors">Admisión</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Recursos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Portal de Padres</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Calendario Escolar</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Reglamento</a></li>
+                        <li><a href="#noticias" class="text-gray-400 hover:text-white transition-colors">Noticias</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Síguenos</h4>
+                    <div class="flex gap-3 mb-4">
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-pink-600 rounded-lg flex items-center justify-center hover:bg-pink-700 transition-colors">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-500 transition-colors">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 text-sm">Escuela con validez oficial ante la SEP</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2026 Colegio Rayito de Sol. Todos los derechos reservados. | <a href="#" class="hover:text-white">Aviso de Privacidad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" class="fixed bottom-8 right-8 w-14 h-14 bg-blue-600 text-white rounded-full shadow-2xl hover:bg-blue-700 transition-all opacity-0 pointer-events-none z-50">
+        <i class="fa-solid fa-arrow-up text-xl"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = mobileMenuBtn.querySelector('i');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-xmark');
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuIcon.classList.add('fa-bars');
+                menuIcon.classList.remove('fa-xmark');
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('shadow-xl');
+            } else {
+                navbar.classList.remove('shadow-xl');
+            }
+        });
+        
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                scrollTopBtn.classList.add('opacity-100');
+            } else {
+                scrollTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                scrollTopBtn.classList.remove('opacity-100');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Create success message
+            const successMsg = document.createElement('div');
+            successMsg.className = 'fixed top-24 right-8 bg-green-500 text-white px-6 py-4 rounded-xl shadow-2xl z-50 animate-bounce-slow';
+            successMsg.innerHTML = '<i class="fa-solid fa-check-circle mr-2"></i>¡Mensaje enviado! Te contactaremos pronto.';
+            document.body.appendChild(successMsg);
+            
+            contactForm.reset();
+            
+            setTimeout(() => {
+                successMsg.remove();
+            }, 4000);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
