@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo | U.E. Río Pavoni</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Nunito', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100 flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-900 text-white flex flex-col hidden md:flex">
+        <div class="h-20 flex items-center justify-center border-b border-gray-800">
+            <img src="img/logoriopavoni.png" alt="Logo" class="h-12 bg-white rounded p-1">
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-gray-800 rounded-xl transition"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 rounded-xl transition"><i class="fa-solid fa-users"></i> Alumnos</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 rounded-xl transition"><i class="fa-solid fa-chalkboard-user"></i> Profesores</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 rounded-xl transition"><i class="fa-solid fa-sack-dollar"></i> Finanzas</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 rounded-xl transition"><i class="fa-solid fa-gear"></i> Configuración</a>
+        </nav>
+        <div class="p-4 border-t border-gray-800">
+            <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-gray-800 rounded-xl transition"><i class="fa-solid fa-sign-out-alt"></i> Cerrar Sesión</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col overflow-y-auto">
+        <!-- Header -->
+        <header class="h-20 bg-white shadow-sm flex items-center justify-between px-8">
+            <h2 class="text-2xl font-bold text-gray-800">Vista General</h2>
+            <div class="flex items-center gap-4">
+                <button class="text-gray-500 hover:text-green-600"><i class="fa-solid fa-bell text-xl"></i></button>
+                <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white font-bold">A</div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="p-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-blue-500">
+                    <p class="text-sm text-gray-500 font-semibold mb-1">Total Alumnos</p>
+                    <h3 class="text-3xl font-bold text-gray-800">542</h3>
+                    <p class="text-xs text-green-500 mt-2"><i class="fa-solid fa-arrow-up"></i> 12 este mes</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-green-500">
+                    <p class="text-sm text-gray-500 font-semibold mb-1">Profesores Activos</p>
+                    <h3 class="text-3xl font-bold text-gray-800">45</h3>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-orange-500">
+                    <p class="text-sm text-gray-500 font-semibold mb-1">Ingresos del Mes</p>
+                    <h3 class="text-3xl font-bold text-gray-800">$12,450</h3>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-red-500">
+                    <p class="text-sm text-gray-500 font-semibold mb-1">Pagos Pendientes</p>
+                    <h3 class="text-3xl font-bold text-gray-800">28</h3>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Solicitudes Recientes -->
+                <div class="bg-white rounded-3xl shadow-sm p-6 lg:col-span-2">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Solicitudes de Admisión Recientes</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="text-gray-400 border-b border-gray-100">
+                                    <th class="pb-3 font-semibold">Nombre</th>
+                                    <th class="pb-3 font-semibold">Grado</th>
+                                    <th class="pb-3 font-semibold">Fecha</th>
+                                    <th class="pb-3 font-semibold">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                <tr class="border-b border-gray-50">
+                                    <td class="py-4">Familia Gómez</td>
+                                    <td class="py-4">1° Primaria</td>
+                                    <td class="py-4">Hoy, 10:30 AM</td>
+                                    <td class="py-4"><span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold">Pendiente</span></td>
+                                </tr>
+                                <tr class="border-b border-gray-50">
+                                    <td class="py-4">Familia Rodríguez</td>
+                                    <td class="py-4">Pre-Kinder</td>
+                                    <td class="py-4">Ayer</td>
+                                    <td class="py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">Aprobado</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4">Familia Martínez</td>
+                                    <td class="py-4">4° Primaria</td>
+                                    <td class="py-4">26 Abr</td>
+                                    <td class="py-4"><span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-bold">En revisión</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tareas de Administrador -->
+                <div class="bg-white rounded-3xl shadow-sm p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Accesos Rápidos</h3>
+                    <div class="space-y-3">
+                        <button class="w-full bg-gray-50 hover:bg-gray-100 border border-gray-200 text-left p-4 rounded-xl font-semibold text-gray-700 transition">
+                            <i class="fa-solid fa-user-plus text-blue-500 w-6"></i> Registrar Alumno
+                        </button>
+                        <button class="w-full bg-gray-50 hover:bg-gray-100 border border-gray-200 text-left p-4 rounded-xl font-semibold text-gray-700 transition">
+                            <i class="fa-solid fa-file-invoice text-green-500 w-6"></i> Generar Recibos
+                        </button>
+                        <button class="w-full bg-gray-50 hover:bg-gray-100 border border-gray-200 text-left p-4 rounded-xl font-semibold text-gray-700 transition">
+                            <i class="fa-solid fa-bullhorn text-orange-500 w-6"></i> Enviar Comunicado
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

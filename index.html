@@ -192,17 +192,34 @@
                     </a>
                 </div>
                 
-                <div class="hidden lg:flex items-center gap-8">
+                <div class="hidden lg:flex items-center gap-6 xl:gap-8">
                     <a href="#inicio" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Inicio</a>
                     <a href="#nosotros" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Nosotros</a>
                     <a href="#niveles" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Niveles</a>
                     <a href="#actividades" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Actividades</a>
                     <a href="#admision" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Admisión</a>
+                    <a href="#calendario" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Calendario</a>
                     <a href="#noticias" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Noticias</a>
                     <a href="#contacto" class="nav-link text-gray-700 font-semibold hover:text-blue-600">Contacto</a>
-                    <a href="#contacto" class="btn-primary text-white px-6 py-2.5 rounded-full font-semibold">
-                        Agendar Visita
-                    </a>
+                    
+                    <!-- Login Dropdown -->
+                    <div class="relative group ml-2">
+                        <button class="flex items-center gap-2 text-gray-700 font-semibold hover:text-blue-600 focus:outline-none transition">
+                            <i class="fa-solid fa-user-circle text-3xl"></i>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="py-2">
+                                <p class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider border-b border-gray-50 mb-1">Ingresar</p>
+                                <a href="dashboard_user.html" class="block px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
+                                    <i class="fa-solid fa-user-graduate w-5 text-center mr-2"></i> Portal Alumno/Padre
+                                </a>
+                                <a href="dashboard_admin.html" class="block px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-green-50 hover:text-green-600 transition">
+                                    <i class="fa-solid fa-user-shield w-5 text-center mr-2"></i> Administrador
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <button id="mobile-menu-btn" class="lg:hidden text-2xl text-gray-700">
@@ -216,11 +233,19 @@
                 <a href="#niveles" class="block py-3 text-gray-700 font-semibold hover:text-blue-600 border-b border-gray-100">Niveles</a>
                 <a href="#actividades" class="block py-3 text-gray-700 font-semibold hover:text-blue-600 border-b border-gray-100">Actividades</a>
                 <a href="#admision" class="block py-3 text-gray-700 font-semibold hover:text-blue-600 border-b border-gray-100">Admisión</a>
+                <a href="#calendario" class="block py-3 text-gray-700 font-semibold hover:text-blue-600 border-b border-gray-100">Calendario</a>
                 <a href="#noticias" class="block py-3 text-gray-700 font-semibold hover:text-blue-600 border-b border-gray-100">Noticias</a>
-                <a href="#contacto" class="block py-3 text-gray-700 font-semibold hover:text-blue-600">Contacto</a>
-                <a href="#contacto" class="btn-primary text-white px-6 py-3 rounded-full font-semibold block text-center mt-4">
-                    Agendar Visita
-                </a>
+                <a href="#contacto" class="block py-3 text-gray-700 font-semibold hover:text-blue-600 border-b border-gray-100">Contacto</a>
+                
+                <div class="pt-4 px-2">
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Accesos a Portales</p>
+                    <a href="dashboard_user.html" class="block py-3 px-4 bg-blue-50 text-blue-700 rounded-xl font-bold mb-2 hover:bg-blue-100 transition">
+                        <i class="fa-solid fa-user-graduate mr-2"></i> Alumno / Padre
+                    </a>
+                    <a href="dashboard_admin.html" class="block py-3 px-4 bg-green-50 text-green-700 rounded-xl font-bold hover:bg-green-100 transition">
+                        <i class="fa-solid fa-user-shield mr-2"></i> Administrador
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -708,6 +733,89 @@
         </div>
     </section>
 
+    <!-- Calendario Section -->
+    <section id="calendario" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-teal-100 text-teal-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                    PRÓXIMOS EVENTOS
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">Calendario Escolar</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Haz clic en los días marcados con color para ver los detalles del evento
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
+                <div class="bg-gradient-to-r from-teal-500 to-blue-500 p-6 text-white text-center flex justify-between items-center">
+                    <button class="hover:bg-white/20 p-2 rounded-full transition"><i class="fa-solid fa-chevron-left"></i></button>
+                    <h3 class="text-2xl font-bold">Mayo 2026</h3>
+                    <button class="hover:bg-white/20 p-2 rounded-full transition"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+                <div class="p-8">
+                    <div class="grid grid-cols-7 gap-2 md:gap-4 mb-4 text-center font-bold text-gray-500 text-sm md:text-base">
+                        <div>Dom</div><div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div>
+                    </div>
+                    <div class="grid grid-cols-7 gap-2 md:gap-4 text-center text-sm md:text-base" id="calendar-days">
+                        <div class="py-2 md:py-3 rounded-xl text-gray-300">26</div>
+                        <div class="py-2 md:py-3 rounded-xl text-gray-300">27</div>
+                        <div class="py-2 md:py-3 rounded-xl text-gray-300">28</div>
+                        <div class="py-2 md:py-3 rounded-xl text-gray-300">29</div>
+                        <div class="py-2 md:py-3 rounded-xl text-gray-300">30</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">1</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">2</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">3</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">4</div>
+                        
+                        <!-- Event day -->
+                        <div class="py-2 md:py-3 rounded-xl font-bold bg-teal-100 text-teal-700 hover:bg-teal-200 cursor-pointer transition shadow-sm border border-teal-200" onclick="alert('📅 5 de Mayo:\n\nDía de la Familia. ¡Te esperamos a las 10:00 AM en el patio principal para disfrutar de juegos y comida!')">5</div>
+                        
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">6</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">7</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">8</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">9</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">10</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">11</div>
+                        
+                        <!-- Event day -->
+                        <div class="py-2 md:py-3 rounded-xl font-bold bg-orange-100 text-orange-700 hover:bg-orange-200 cursor-pointer transition shadow-sm border border-orange-200" onclick="alert('🔬 12 de Mayo:\n\nFeria de Ciencias Anual. Ven a ver los increíbles proyectos y experimentos de nuestros estudiantes.')">12</div>
+                        
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">13</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">14</div>
+                        
+                        <!-- Event day -->
+                        <div class="py-2 md:py-3 rounded-xl font-bold bg-blue-100 text-blue-700 hover:bg-blue-200 cursor-pointer transition shadow-sm border border-blue-200" onclick="alert('🍎 15 de Mayo:\n\nDía del Maestro. Suspensión de labores académicas en todos los niveles.')">15</div>
+                        
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">16</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">17</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">18</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">19</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">20</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">21</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">22</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">23</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">24</div>
+                        
+                        <!-- Event day -->
+                        <div class="py-2 md:py-3 rounded-xl font-bold bg-purple-100 text-purple-700 hover:bg-purple-200 cursor-pointer transition shadow-sm border border-purple-200" onclick="alert('⚽ 25 de Mayo:\n\nTorneo de Fútbol Interescolar. Apoya a nuestros Delfines en la cancha principal a partir de las 8:30 AM.')">25</div>
+                        
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">26</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">27</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">28</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">29</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">30</div>
+                        <div class="py-2 md:py-3 rounded-xl font-semibold hover:bg-gray-100 cursor-pointer transition">31</div>
+                        <div class="py-2 md:py-3 rounded-xl text-gray-300">1</div>
+                        <div class="py-2 md:py-3 rounded-xl text-gray-300">2</div>
+                        <div class="py-2 md:py-3 rounded-xl text-gray-300">3</div>
+                        <div class="py-2 md:py-3 rounded-xl text-gray-300">4</div>
+                        <div class="py-2 md:py-3 rounded-xl text-gray-300">5</div>
+                        <div class="py-2 md:py-3 rounded-xl text-gray-300">6</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <!-- Contacto Section -->
     <section id="contacto" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -843,11 +951,11 @@
                 </div>
                 
                 <div>
-                    <h4 class="font-bold text-lg mb-4">Recursos</h4>
+                    <h4 class="font-bold text-lg mb-4">Portales</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Portal de Padres</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Calendario Escolar</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Reglamento</a></li>
+                        <li><a href="dashboard_user.html" class="text-gray-400 hover:text-white transition-colors">Portal de Alumnos/Padres</a></li>
+                        <li><a href="dashboard_admin.html" class="text-gray-400 hover:text-white transition-colors">Portal Administrativo</a></li>
+                        <li><a href="#calendario" class="text-gray-400 hover:text-white transition-colors">Calendario Escolar</a></li>
                         <li><a href="#noticias" class="text-gray-400 hover:text-white transition-colors">Noticias</a></li>
                     </ul>
                 </div>
